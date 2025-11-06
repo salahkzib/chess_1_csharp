@@ -12,8 +12,7 @@ namespace chess_main_project
 { 
     public partial class win : Form
     {
-        public int height_screen = SystemInformation.WorkingArea.Height;
-        public int width_screen = SystemInformation.WorkingArea.Width;
+        public static Tuple<bool, int[]> check_en_passant = new Tuple<bool, int[]>(false, default);
         public win()
         {
             InitializeComponent();
@@ -34,7 +33,6 @@ namespace chess_main_project
             Button[][] squares = arrt.ToArray();
             return squares;
         }
-
         public Button[] white_pieces()
         {
             Button[] all_white_pieces = { w_pawn_a, w_pawn_b, w_pawn_c, w_pawn_d, w_pawn_e, w_pawn_f, w_pawn_g, w_pawn_h, w_queen, w_king, w_knight_1, w_knight_2, w_bishop_1, w_bishop_2, w_rook_1, w_rook_2 };
@@ -90,7 +88,7 @@ namespace chess_main_project
                 while(j < 8)
                 {
                     k = 0;
-                    while (squares[i][j].Location != GetPieceSquareLocation(pieces[k]) & k <= 64)
+                    while (squares[i][j].Location != get_piece_square_location(pieces[k]) & k <= 64)
                     {
                         k++;
                     }
@@ -135,17 +133,21 @@ namespace chess_main_project
             }
             return check;
         }
+        public Point[,,] threatened_squares()
+        {
+            Point[,,] all_threatened_squares = new Point[2,8,8];
+            return all_threatened_squares;
+        }
         public Boolean able_to_move()
         {
             bool is_it = true;
             return is_it;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
         }
-        public Point GetPieceSquareLocation(Button piece)
+        public Point get_piece_square_location(Button piece)
         {
             Point piece_location = piece.Location;
             Point square_location = new Point(
@@ -153,6 +155,39 @@ namespace chess_main_project
                 (piece_location.Y + 46/2 - 70/2)
                 );
             return square_location;
+        }
+        public int[] search_square_index_in_all_squares(Point square_coordinates)
+        {
+            int[] r = { -1, -1 };
+            for(int y = 0; y < all_squares().GetUpperBound(0); y++)
+            {
+                for (int x = 0; x < all_squares().GetUpperBound(1); x++)
+                {
+                    Point point_check_square = all_squares()[y][x].Location;
+                    if(square_coordinates == point_check_square)
+                    {
+                        r[0] = x;
+                        r[1] = y;
+                        break;
+                    }
+                }
+            }
+            return r;
+        }
+        // pawn direction can be 1 or -1
+        public object[] possible_en_passant(Button pawn, int pawn_direction)
+        {
+            Point taken_square = default;
+            bool check_possibility = false;
+            Point pawn_position = get_piece_square_location(pawn);
+            int[] index_of_square = search_square_index_in_all_squares(pawn_position);
+            if (check_en_passant.Item1 == true && check_en_passant.Item2[1] == index_of_square[1])
+            {
+                taken_square = new Point(check_en_passant.Item2[0], index_of_square[1] + pawn_direction);
+                check_possibility = true;
+            }
+            object[] result = {check_possibility, taken_square};
+            return result;
         }
         // (Tag) for x
         // (TabIndex) for y
@@ -162,13 +197,27 @@ namespace chess_main_project
         // for item 2 : return 0 if the pawn is still in its initial square and 1 for the opposite(move to another square)
         public Point[] pawn_mouvement(Button pawn, int[] direction_and_is_still_in)
         {
+            // possible pawn moves :
+            // take in the both sides
+            // going forward
+            // en passant (can be in one side but we count it as 2 because it does not matter what side where it will take a pawn (it can be do just to a pawn))
+            bool can_move = able_to_move();
             int number_of_moves = 4;
             Point[] moves = new Point[number_of_moves];
-            Point[] probable_squares = new Point[4];
+            Point pawn_square = get_piece_square_location(pawn);
+            int[] pawn_index = search_square_index_in_all_squares(pawn_square);
+            Point[] probable_squares = { 
+                all_squares()[pawn_index[1]][pawn_index[0]].Location,
+                all_squares()[pawn_index[1]][pawn_index[0]].Location,
+                all_squares()[pawn_index[1]][pawn_index[0]].Location,
+                all_squares()[pawn_index[1]][pawn_index[0]].Location
+            };
             int[] cases = new int[number_of_moves];
+            if (able_to_move() & is_it_able(pawn, pawn.Tag.ToString()) & direction_and_is_still_in[1] == 0)
+            {
+            }
             int case_element_index;
             int moves_index = 0;
-            long m = 1;
             for(int index = 0; index < number_of_moves; index++)
             {
                 case_element_index = cases[index];
@@ -207,6 +256,12 @@ namespace chess_main_project
             int number_of_moves = (8 * 4) - 1;
             Point[] moves = new Point[number_of_moves];
             return moves;
+        }
+        public Tuple<bool, Point[]> castling_possible(Button king, Point[] where)
+        {
+            bool possibilite = true;
+            Tuple<bool, Point[]> result = new Tuple<bool, Point[]>(possibilite, where);
+            return result;
         }
         public Point[] king_mouvement(Button king)
         {
