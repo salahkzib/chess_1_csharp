@@ -310,7 +310,6 @@
             this.b16.TabIndex = 2;
             this.b16.Tag = "0";
             this.b16.UseVisualStyleBackColor = false;
-            this.b16.Click += new System.EventHandler(this.b16_Click);
             // 
             // b30
             // 
@@ -376,7 +375,6 @@
             this.b37.TabIndex = 4;
             this.b37.Tag = "5";
             this.b37.UseVisualStyleBackColor = false;
-            this.b37.Click += new System.EventHandler(this.b37_Click);
             // 
             // b35
             // 
@@ -403,7 +401,6 @@
             this.b33.TabIndex = 4;
             this.b33.Tag = "1";
             this.b33.UseVisualStyleBackColor = false;
-            this.b33.Click += new System.EventHandler(this.b33_Click);
             // 
             // b39
             // 
@@ -713,7 +710,6 @@
             this.w_pawn_a.TabIndex = 83;
             this.w_pawn_a.Tag = "w";
             this.w_pawn_a.UseVisualStyleBackColor = true;
-            this.w_pawn_a.Click += new System.EventHandler(this.w_pawn_a_Click);
             // 
             // w_pawn_b
             // 
@@ -1493,7 +1489,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 749);
+            this.ClientSize = new System.Drawing.Size(1189, 749);
             this.Controls.Add(this.b23);
             this.Controls.Add(this.cg);
             this.Controls.Add(this.ch);
