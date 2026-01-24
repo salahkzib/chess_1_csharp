@@ -19,67 +19,71 @@ namespace chess_main_project
         public win()
         {
             InitializeComponent();
+            //AllSquares();
         }
-        public Tuple<bool, Button ,int[]> check_en_passant = new Tuple<bool, Button, int[]>(false, default, new int[] { -1, -1 });
-        public Button[][] all_squares  = new Button[8][];
-        public Button[] white_pieces = new Button[16];
-        public Button[] black_pieces = new Button[16];
-        public Button[] all_pieces = new Button[32];
-        public Button[][][] places_pieces = new Button[8][][];
-        public List<Button> threatened_pieces = new List<Button>();
+        private Tuple<bool, Button ,int[]> check_en_passant = new Tuple<bool, Button, int[]>(false, default, new int[] { -1, -1 });
+        private Button[][] all_squares;
+        private Button[] white_pieces;
+        private Button[] black_pieces;
+        private Button[] all_pieces;
+        private Button[][][] places_pieces;
+        private List<Button> threatened_pieces;
+
         public void AllSquares()
         {
-            this.all_squares = new Button[8][]
+            all_squares = new Button[8][]
             {
-                new Button[] { b0, b1, b2, b3, b4, b5, b6, b7 },
-                new Button[] { b8, b9, b10, b11, b12, b13, b14, b15 },
-                new Button[] { b16, b17, b18, b19, b20, b21, b22, b23 },
-                new Button[] { b24, b25, b26, b27, b28, b29, b30, b31 },
-                new Button[] { b32, b33, b34, b35, b36, b37, b38, b39 },
-                new Button[] { b40, b41, b42, b43, b44, b45, b46, b47 },
-                new Button[] { b48, b49, b50, b51, b52, b53, b54, b55 },
-                new Button[] { b56, b57, b58, b59, b60, b61, b60, b63 }
+                new Button[8] { b0, b1, b2, b3, b4, b5, b6, b7 },
+                new Button[8] { b8, b9, b10, b11, b12, b13, b14, b15 },
+                new Button[8] { b16, b17, b18, b19, b20, b21, b22, b23 },
+                new Button[8] { b24, b25, b26, b27, b28, b29, b30, b31 },
+                new Button[8] { b32, b33, b34, b35, b36, b37, b38, b39 },
+                new Button[8] { b40, b41, b42, b43, b44, b45, b46, b47 },
+                new Button[8] { b48, b49, b50, b51, b52, b53, b54, b55 },
+                new Button[8] { b56, b57, b58, b59, b60, b61, b60, b63 }
             };
         }
         public void WhitePieces()
         {
-            this.white_pieces = new Button[]{ w_pawn_a, w_pawn_b, w_pawn_c, w_pawn_d, w_pawn_e, w_pawn_f, w_pawn_g, w_pawn_h, w_queen, w_king, w_knight_1, w_knight_2, w_bishop_1, w_bishop_2, w_rook_1, w_rook_2 };
+            white_pieces = new Button[16]{ w_pawn_a, w_pawn_b, w_pawn_c, w_pawn_d, w_pawn_e, w_pawn_f, w_pawn_g, w_pawn_h, w_queen, w_king, w_knight_1, w_knight_2, w_bishop_1, w_bishop_2, w_rook_1, w_rook_2 };
         }
         public void BlackPieces()
         {
-            this.black_pieces = new Button[]{ b_pawn_a, b_pawn_b, b_pawn_c, b_pawn_d, b_pawn_e, b_pawn_f, b_pawn_g, b_pawn_h, b_queen, b_king, b_knight_1, b_knight_2, b_bishop_1, b_bishop_2, b_rook_1, b_rook_2 };
+            black_pieces = new Button[]{ b_pawn_a, b_pawn_b, b_pawn_c, b_pawn_d, b_pawn_e, b_pawn_f, b_pawn_g, b_pawn_h, b_queen, b_king, b_knight_1, b_knight_2, b_bishop_1, b_bishop_2, b_rook_1, b_rook_2 };
         }
         public void AllPieces() 
         {
+            WhitePieces();
+            BlackPieces();
+            all_pieces = new Button[33];
             for (int i = 0; i < 16; i++)
             {
-                this.all_pieces[i] = this.white_pieces[i];
+                all_pieces[i+16] = black_pieces[i];
+                all_pieces[i] = white_pieces[i];
             }
-            for (int j = 16; j < 32; j++)
-            {
-                this.all_pieces[j] = this.black_pieces[j];
-            }
-            all_pieces[33] = default;
+            all_pieces[32] = default;
         }
         public void PlacesPieces()
         {
-            // squares will contain all the squares with their index
-            Button[][] squares = this.all_squares;
-            // pieces will contain all the pieces
-            Button[] pieces = this.all_pieces;
+            AllPieces();
+            AllSquares();
             // array will be used to know where are the pieces on the board(in which square)
-            Button[][][] places_all_pieces = new Button[8][][];
+            places_pieces = new Button[8][][];
             // this algorithm will return a 3D array which is places_all_pieces with the pieces
             // and their squares and 2D array indexs_available_squares with 0(available square) and 1 (unavailable square)
             for(int i = 0; i < 8; i++)
             {
-                for(int j = 0; j < 8; j++)
+
+                places_pieces[i] = new Button[8][];
+                for (int j = 0; j < 8; j++)
                 {
-                    for(int k = 0; k < 32; k++)
+                    places_pieces[i][j] = new Button[2];
+                    places_pieces[i][j][0] = all_squares[i][j];
+                    for (int k = 0; k < 32; k++)
                     {
-                        if (squares[i][j].Location == get_piece_square_location(pieces[k]))
+                        if (all_squares[i][j].Location == get_piece_square_location(all_pieces[k]))
                         {
-                            this.places_pieces[i][j] = new Button[2] { pieces[k], squares[i][j] };
+                            places_pieces[i][j][1] = all_pieces[k];
                             k = 32;
                         }
                     }
@@ -134,24 +138,25 @@ namespace chess_main_project
         {
             Point piece_location = piece.Location;
             Point square_location = new Point(
-                (piece_location.X + 46/2 - 70/2),
-                (piece_location.Y + 46/2 - 70/2)
+                (piece_location.X - 12),
+                (piece_location.Y - 7)
                 );
             return square_location;
         }
         public int[] search_square_index_in_all_squares(Point square_coordinates)
         {
+            AllSquares();
             int[] r = { -1, -1 };
-            for(int y = 0; y < this.all_squares.GetUpperBound(0); y++)
+            for(int x = 0; x < all_squares.Length; x++)
             {
-                for (int x = 0; x < this.all_squares.GetUpperBound(1); x++)
+                for (int y = 0; y < all_squares[x].Length; y++)
                 {
-                    Point point_check_square = this.all_squares[y][x].Location;
+                    Point point_check_square = all_squares[x][y].Location;
                     if(square_coordinates == point_check_square)
                     {
                         r[0] = x;
                         r[1] = y;
-                        break;
+                        return r;
                     }
                 }
             }
@@ -177,13 +182,14 @@ namespace chess_main_project
         // for item 1 : 1 or 6 mean to the direction which is in this case the initial y square of the pawn so
         // 1 mean that the pawn have : the ability to go from the column 1 to 7 and 6 is the opposite : the ability to go from the column 6 to 0)
         // for item 2 : return 0 if the pawn is still in its initial square and 1 for the opposite(move to another square)
-        public List<Point> pawn_mouvement(Button pawn, int[] direction_and_is_still_in)
+        public Tuple< List<Point> , List<Button> > pawn_mouvement(Button pawn, int[] direction_and_is_still_in)
         {
             // possible pawn moves :
             // take in the both sides
             // going forward
             // en passant (can be in one side but we count it as 2 because it does not matter what side where it will take a pawn (it can be do just to a pawn))
             List<Point> moves = new List<Point>();
+            List<Button> squares = new List<Button>();
             Point pawn_square_point = get_piece_square_location(pawn);
             int[] pawn_square_index = search_square_index_in_all_squares(pawn_square_point);
             int[][] probable_squares = {
@@ -192,19 +198,22 @@ namespace chess_main_project
                 new int[] { pawn_square_index[1] + 1, pawn_square_index[0] + 1 },
                 new int[] { pawn_square_index[1] + 1, pawn_square_index[0] - 1 }
             };
+            PlacesPieces();
             for(int i = 0; i < probable_squares.Length; i++)
             {
                 try
                 {
-                    Button etudied_square = this.places_pieces[probable_squares[i][1]][probable_squares[i][0]][0];
+                    Button etudied_square = places_pieces[probable_squares[i][0]] [probable_squares[i][1]] [0];
                     if(( possible_en_passant(pawn, pawn_square_index) | is_it_able(etudied_square, pawn.Tag.ToString()) ) & able_to_move(pawn))
                     {
                         moves.Add(etudied_square.Location);
+                        squares.Add(etudied_square);
                     }
                 }
                 catch { }
             }
-            return moves;
+            Tuple< List<Point> , List<Button> > MovesSquares = new Tuple< List<Point> , List<Button> >(moves, squares);
+            return MovesSquares;
         }
         public Point[] knight_mouvement(Button knight)
         {
@@ -214,8 +223,17 @@ namespace chess_main_project
         }
         public List<Point> bishop_mouvement(Button bishop)
         {
-            int number_of_moves = (8 * 2) - 1;
             List<Point> moves = new List<Point>();
+            Point bishop_square_point = get_piece_square_location(bishop);
+            int[] bishop_square_index = search_square_index_in_all_squares(bishop_square_point);
+            
+            /*int[] possible_squares = new int[]
+            int i = 0;
+            int j = 0;
+            while(i <= 4)
+            {
+                while(j < 8 )
+            }*/
             return moves;
         }
         public Point[] rook_mouvement(Button rook)
@@ -241,6 +259,39 @@ namespace chess_main_project
             int number_of_moves = 9;
             Point[] moves = new Point[number_of_moves];
             return moves;
+        }
+
+        private void w_pawn_b_Click(object sender, EventArgs e)
+        {
+            AllSquares();
+            int[] n = {1, 0};
+            List<Point> moves = pawn_mouvement(w_pawn_b, n).Item1;
+            List<Button> squares = pawn_mouvement(w_pawn_b, n).Item2;
+            for(int i = 0; i < squares.Count; i++)
+            {
+                squares[i].Enabled = true;
+                squares[i].BackColor = Color.Red;
+            }
+        }
+
+        private void ca_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void r1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void r2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

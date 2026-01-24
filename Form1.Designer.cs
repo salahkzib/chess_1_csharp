@@ -719,6 +719,7 @@
             this.w_pawn_b.TabIndex = 84;
             this.w_pawn_b.Tag = "w";
             this.w_pawn_b.UseVisualStyleBackColor = true;
+            this.w_pawn_b.Click += new System.EventHandler(this.w_pawn_b_Click);
             // 
             // w_pawn_c
             // 
@@ -845,6 +846,7 @@
             this.r1.Size = new System.Drawing.Size(13, 13);
             this.r1.TabIndex = 98;
             this.r1.Text = "1";
+            this.r1.Click += new System.EventHandler(this.r1_Click);
             // 
             // r4
             // 
@@ -863,6 +865,7 @@
             this.r2.Size = new System.Drawing.Size(13, 13);
             this.r2.TabIndex = 100;
             this.r2.Text = "2";
+            this.r2.Click += new System.EventHandler(this.r2_Click);
             // 
             // r3
             // 
@@ -962,6 +965,7 @@
             this.cb.Size = new System.Drawing.Size(13, 13);
             this.cb.TabIndex = 108;
             this.cb.Text = "b";
+            this.cb.Click += new System.EventHandler(this.cb_Click);
             // 
             // cd
             // 
@@ -980,6 +984,7 @@
             this.ca.Size = new System.Drawing.Size(13, 13);
             this.ca.TabIndex = 106;
             this.ca.Text = "a";
+            this.ca.Click += new System.EventHandler(this.ca_Click);
             // 
             // b23
             // 
@@ -997,7 +1002,6 @@
             // b6
             // 
             this.b6.BackColor = System.Drawing.Color.Black;
-            this.b6.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b6.Enabled = false;
             this.b6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1012,7 +1016,6 @@
             // b4
             // 
             this.b4.BackColor = System.Drawing.Color.Black;
-            this.b4.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b4.Enabled = false;
             this.b4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1027,7 +1030,6 @@
             // b2
             // 
             this.b2.BackColor = System.Drawing.Color.Black;
-            this.b2.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b2.Enabled = false;
             this.b2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1042,12 +1044,11 @@
             // b0
             // 
             this.b0.BackColor = System.Drawing.Color.Black;
-            this.b0.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b0.Enabled = false;
             this.b0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.b0.ForeColor = System.Drawing.Color.Black;
-            this.b0.Location = new System.Drawing.Point(256, 608);
+            this.b0.Location = new System.Drawing.Point(255, 608);
             this.b0.Name = "b0";
             this.b0.Size = new System.Drawing.Size(70, 70);
             this.b0.TabIndex = 0;
@@ -1057,7 +1058,6 @@
             // b15
             // 
             this.b15.BackColor = System.Drawing.Color.Black;
-            this.b15.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b15.Enabled = false;
             this.b15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1072,7 +1072,6 @@
             // b13
             // 
             this.b13.BackColor = System.Drawing.Color.Black;
-            this.b13.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b13.Enabled = false;
             this.b13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1087,7 +1086,6 @@
             // b11
             // 
             this.b11.BackColor = System.Drawing.Color.Black;
-            this.b11.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b11.Enabled = false;
             this.b11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1102,7 +1100,6 @@
             // b9
             // 
             this.b9.BackColor = System.Drawing.Color.Black;
-            this.b9.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b9.Enabled = false;
             this.b9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1117,7 +1114,6 @@
             // b22
             // 
             this.b22.BackColor = System.Drawing.Color.Black;
-            this.b22.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b22.Enabled = false;
             this.b22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1132,7 +1128,6 @@
             // b20
             // 
             this.b20.BackColor = System.Drawing.Color.Black;
-            this.b20.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b20.Enabled = false;
             this.b20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1147,7 +1142,6 @@
             // b18
             // 
             this.b18.BackColor = System.Drawing.Color.Black;
-            this.b18.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b18.Enabled = false;
             this.b18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1175,7 +1169,6 @@
             // b31
             // 
             this.b31.BackColor = System.Drawing.Color.Black;
-            this.b31.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b31.Enabled = false;
             this.b31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1190,7 +1183,6 @@
             // b29
             // 
             this.b29.BackColor = System.Drawing.Color.Black;
-            this.b29.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b29.Enabled = false;
             this.b29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1205,7 +1197,6 @@
             // b27
             // 
             this.b27.BackColor = System.Drawing.Color.Black;
-            this.b27.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b27.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b27.Enabled = false;
             this.b27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1220,7 +1211,6 @@
             // b25
             // 
             this.b25.BackColor = System.Drawing.Color.Black;
-            this.b25.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b25.Enabled = false;
             this.b25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1235,7 +1225,6 @@
             // b38
             // 
             this.b38.BackColor = System.Drawing.Color.Black;
-            this.b38.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b38.Enabled = false;
             this.b38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1250,7 +1239,6 @@
             // b36
             // 
             this.b36.BackColor = System.Drawing.Color.Black;
-            this.b36.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b36.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b36.Enabled = false;
             this.b36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1265,7 +1253,6 @@
             // b34
             // 
             this.b34.BackColor = System.Drawing.Color.Black;
-            this.b34.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b34.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b34.Enabled = false;
             this.b34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1280,7 +1267,6 @@
             // b32
             // 
             this.b32.BackColor = System.Drawing.Color.Black;
-            this.b32.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b32.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b32.Enabled = false;
             this.b32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1295,7 +1281,6 @@
             // b47
             // 
             this.b47.BackColor = System.Drawing.Color.Black;
-            this.b47.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b47.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b47.Enabled = false;
             this.b47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1310,7 +1295,6 @@
             // b45
             // 
             this.b45.BackColor = System.Drawing.Color.Black;
-            this.b45.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b45.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b45.Enabled = false;
             this.b45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1325,7 +1309,6 @@
             // b43
             // 
             this.b43.BackColor = System.Drawing.Color.Black;
-            this.b43.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b43.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b43.Enabled = false;
             this.b43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1340,7 +1323,6 @@
             // b41
             // 
             this.b41.BackColor = System.Drawing.Color.Black;
-            this.b41.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b41.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b41.Enabled = false;
             this.b41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1355,7 +1337,6 @@
             // b54
             // 
             this.b54.BackColor = System.Drawing.Color.Black;
-            this.b54.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b54.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b54.Enabled = false;
             this.b54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1383,7 +1364,6 @@
             // b52
             // 
             this.b52.BackColor = System.Drawing.Color.Black;
-            this.b52.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b52.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b52.Enabled = false;
             this.b52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1398,7 +1378,6 @@
             // b50
             // 
             this.b50.BackColor = System.Drawing.Color.Black;
-            this.b50.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b50.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b50.Enabled = false;
             this.b50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1413,7 +1392,6 @@
             // b48
             // 
             this.b48.BackColor = System.Drawing.Color.Black;
-            this.b48.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b48.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b48.Enabled = false;
             this.b48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1428,7 +1406,6 @@
             // b63
             // 
             this.b63.BackColor = System.Drawing.Color.Black;
-            this.b63.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b63.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b63.Enabled = false;
             this.b63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1443,7 +1420,6 @@
             // b61
             // 
             this.b61.BackColor = System.Drawing.Color.Black;
-            this.b61.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b61.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b61.Enabled = false;
             this.b61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1458,7 +1434,6 @@
             // b59
             // 
             this.b59.BackColor = System.Drawing.Color.Black;
-            this.b59.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b59.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b59.Enabled = false;
             this.b59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1473,7 +1448,6 @@
             // b57
             // 
             this.b57.BackColor = System.Drawing.Color.Black;
-            this.b57.BackgroundImage = global::chess_main_project.Properties.Resources.black;
             this.b57.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.b57.Enabled = false;
             this.b57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

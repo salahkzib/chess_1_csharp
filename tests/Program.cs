@@ -10,15 +10,21 @@ namespace tests
 {
     public class Program
     {
+        public void tst()
+        {
+
+            string text = "Hello, World!";
+            string path = "C:\\Users\\kzibs\\Desktop\\test.txt";
+            using (File.Create(path)) ;
+            StreamWriter s = new StreamWriter(path);
+            s.WriteLine(text);
+        }
         static void Main(string[] args)
         {
-            string pa = @"C:\Users\kzibs\Desktop\projects\chess\chess_main_project\tests\TextFile1.txt";
-            string[] lines = File.ReadAllLines(pa);
-            string moha = "moha";
-            File.AppendAllLines(pa, new string[] { moha });
-
-            string tx = lines[0].Trim();
-            Console.WriteLine(tx);
+            int i = 0;
+            int[] arr = new int[5];
+            while (i < arr.Length & 1 != arr[i])
+                i++;
         }
     }
 }
