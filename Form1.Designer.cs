@@ -1,5 +1,20 @@
-﻿namespace chess_main_project
+﻿using System;
+using System.Windows.Forms;
+
+namespace chess_main_project
 {
+    public class ChessComponentsButtonsSetting : Button
+    {
+        public int[] index;
+        public void SetIndex(int x, int y)
+        {
+            index = new int[2] { x, y };
+        }
+        public ChessComponentsButtonsSetting()
+        {
+
+        }
+    }
     partial class win
     {
         /// <summary>
@@ -147,7 +162,7 @@
             // w_rook_2
             // 
             this.w_rook_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.w_rook_2.Location = new System.Drawing.Point(764, 613);
+            this.w_rook_2.Location = new System.Drawing.Point(764, 615);
             this.w_rook_2.Name = "w_rook_2";
             this.w_rook_2.Size = new System.Drawing.Size(45, 58);
             this.w_rook_2.TabIndex = 64;
@@ -710,6 +725,7 @@
             this.w_pawn_a.TabIndex = 83;
             this.w_pawn_a.Tag = "w";
             this.w_pawn_a.UseVisualStyleBackColor = true;
+            this.w_pawn_a.Click += new System.EventHandler(this.w_pawn_a_Click);
             // 
             // w_pawn_b
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,6 @@ namespace chess_main_project
         public win()
         {
             InitializeComponent();
-            //AllSquares();
         }
         private Tuple<bool, Button ,int[]> check_en_passant = new Tuple<bool, Button, int[]>(false, default, new int[] { -1, -1 });
         private Button[][] all_squares;
@@ -73,7 +73,6 @@ namespace chess_main_project
             // and their squares and 2D array indexs_available_squares with 0(available square) and 1 (unavailable square)
             for(int i = 0; i < 8; i++)
             {
-
                 places_pieces[i] = new Button[8][];
                 for (int j = 0; j < 8; j++)
                 {
@@ -118,16 +117,16 @@ namespace chess_main_project
             }
             return check;
         }
-        public Point[,,] ThreatenedPieces()
+        public void ThreatenedPieces()
         {
             Point[,,] all_threatened_squares = new Point[2,8,8];
-            return all_threatened_squares;
         }
         public bool able_to_move(Button piece)
         {
-            for(int x = 0; x < this.threatened_pieces.Count; x++)
+            return true;
+            for (int x = 0; x < threatened_pieces.Count; x++)
             {
-                if (this.threatened_pieces[x] == piece)
+                if (threatened_pieces[x] == piece)
                 {
                     return false;
                 }
@@ -267,7 +266,7 @@ namespace chess_main_project
             int[] n = {1, 0};
             List<Point> moves = pawn_mouvement(w_pawn_b, n).Item1;
             List<Button> squares = pawn_mouvement(w_pawn_b, n).Item2;
-            for(int i = 0; i < squares.Count; i++)
+            for (int i = 0; i < squares.Count; i++)
             {
                 squares[i].Enabled = true;
                 squares[i].BackColor = Color.Red;
@@ -292,6 +291,11 @@ namespace chess_main_project
         private void r2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void w_pawn_a_Click(object sender, EventArgs e)
+        {
+            PlacesPieces();
         }
     }
 }
