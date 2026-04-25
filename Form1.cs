@@ -13,6 +13,10 @@ namespace chess_main_project
 {
     public partial class win : Form
     {
+        private void TestYarabh()
+        {
+            string tst = "sisi 3amohom";
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
